@@ -35,7 +35,7 @@ const MapWithClusterer = compose(
           position={{ lat: marker.lat, lng: marker.lng }}
         />
       ))}
-    </MarkerClusterer>/>
+    </MarkerClusterer>
   </GoogleMap>
 ));
 
