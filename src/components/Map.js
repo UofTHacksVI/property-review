@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, withProps } from 'recompose'
+import { compose, withProps, withHandlers } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 
@@ -22,13 +22,20 @@ const MapWithClusterer = compose(
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
+  withHandlers({
+    onMarkerClustererClick: () => (markerClusterer) => {
+      const clickedMarkers = markerClusterer.getMarkers()
+      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
+      console.log(clickedMarkers)
+    }
+  }),
   withScriptjs,
   withGoogleMap
 )((props =>
   <GoogleMap
     defaultZoom={10}
     defaultCenter={defaultLocation}>
-    <MarkerClusterer>
+    <MarkerClusterer onClick={props.onMarkerClustererClick}>
       {props.markers.map((marker, index) => (
         <Marker
           key={index}
