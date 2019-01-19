@@ -1,6 +1,8 @@
 import React from 'react';
 import { compose, withProps } from 'recompose'
-import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+
+const defaultLocation = { lat: 43.659, lng: -79.396 }
 
 const SimpleMap = compose(
   withProps({
@@ -14,7 +16,9 @@ const SimpleMap = compose(
 )((props =>
   <GoogleMap
     defaultZoom={10}
-    defaultCenter={{ lat: 43.786, lng: -79.463 }} />
+    defaultCenter={defaultLocation}>
+    <Marker position={defaultLocation} />}
+  </GoogleMap>
 ));
 
 class Map extends React.PureComponent {
