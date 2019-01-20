@@ -50,6 +50,7 @@ class Reviews extends Component {
             <AddIcon />
           </Fab>
           <CreateReview
+            property={property}
             open={open}
             handleClickOpen={this.handleClickOpen}
             handleClose={this.handleClose}
