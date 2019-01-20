@@ -50,7 +50,6 @@ export default class FormDialog extends React.Component {
               margin="dense"
               id="standard-textarea"
               label="Share details of your experience at this property"
-              placeholder="Placeholder"
               multiline
               fullWidth
             />
