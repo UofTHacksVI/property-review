@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SearchBar from './components/SearchBar';
 import Map from './components/Map';
+import CreateReview from './components/CreateReview'
 
 const styles = theme => ({
   root: { padding: theme.spacing.unit * 2 }
@@ -21,8 +22,7 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <SearchBar address={address} handleChange={this.handleChange} />
-        <Map />
+        <CreateReview />
       </div>
     );
   }
