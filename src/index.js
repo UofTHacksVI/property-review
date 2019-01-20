@@ -11,6 +11,9 @@ import Root from './Root';
 const store = createStore(rootReducer);
 
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
   palette: {
     primary: blue
   }

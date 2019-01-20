@@ -15,7 +15,7 @@ const styles = theme => ({
   }
 });
 
-const SearchBar = ({ classes, address, handleChange }) => (
+const SearchBar = ({ classes, address, handleChange, handleSearch }) => (
   <div className={classes.root}>
     <TextField
       label="Address"
@@ -24,11 +24,16 @@ const SearchBar = ({ classes, address, handleChange }) => (
       value={address}
       name="address"
       onChange={handleChange}
+      onKeyDown={e => {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      }}
       placeholder="Search Google Maps"
       fullWidth
     />
     <div className={classes.searchIcon}>
-      <SearchIcon fontSize="large" />
+      <SearchIcon onClick={handleSearch} fontSize="large" />
     </div>
   </div>
 );
@@ -36,7 +41,8 @@ const SearchBar = ({ classes, address, handleChange }) => (
 SearchBar.propTypes = {
   classes: PropTypes.object.isRequired,
   address: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(SearchBar);
