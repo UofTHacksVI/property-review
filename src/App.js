@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
+import AuthPage from './components/AuthPage';
 
 const styles = theme => ({
   root: {
@@ -15,8 +16,9 @@ const styles = theme => ({
 const App = ({ classes }) => (
   <BrowserRouter>
     <div className={classes.root}>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/search" component={SearchPage} />
+      <Route path="/home" exact component={HomePage} />
+      <Route path="/search" exact component={SearchPage} />
+      <Route path="/" exact component={AuthPage} />
     </div>
   </BrowserRouter>
 );
