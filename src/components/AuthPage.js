@@ -14,21 +14,14 @@ firebase.initializeApp(config);
 
 const uiConfig = {
   signInFlow: 'popup',
-  signInSuccessUrl: '/signedIn',
+  signInSuccessUrl: '/home',
   signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
 };
 
-class AuthPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
-        />
-      </div>
-    );
-  }
-}
+const AuthPage = () => (
+  <div>
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+  </div>
+);
 
 export default AuthPage;

@@ -1,35 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import SearchBar from './components/SearchBar';
-import Map from './components/Map';
-import CreateReview from './components/CreateReview';
+import HomePage from './components/HomePage';
+import SearchPage from './components/SearchPage';
 import AuthPage from './components/AuthPage';
 
 const styles = theme => ({
-  root: { padding: theme.spacing.unit * 2 }
+  root: {
+    height: '100vh',
+    padding: theme.spacing.unit * 2
+  }
 });
 
-class App extends Component {
-  state = {
-    address: ''
-  };
-
-  handleChange = e => this.setState({ [e.target.name]: e.target.value });
-
-  render() {
-    const { classes } = this.props;
-    const { address } = this.state;
-
-    return (
-      // <div className={classes.root}>
-      //   <SearchBar address={address} handleChange={this.handleChange} />
-      //   <Map showHeatMap />
-      // </div>
-      <AuthPage />
-    );
-  }
-}
+const App = ({ classes }) => (
+  <BrowserRouter>
+    <div className={classes.root}>
+      <Route path="/home" exact component={HomePage} />
+      <Route path="/search" exact component={SearchPage} />
+      <Route path="/" exact component={AuthPage} />
+    </div>
+  </BrowserRouter>
+);
 
 App.propTypes = {
   classes: PropTypes.object.isRequired

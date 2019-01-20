@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Star from '@material-ui/icons/Star';
 import StarBorder from '@material-ui/icons/StarBorder';
+import { withStyles } from '@material-ui/core';
 
-const styles = theme => ({});
+const styles = () => ({});
 
 class Rating extends React.Component {
   state = {
@@ -29,8 +29,10 @@ class Rating extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className={this.props.classes.root}>
+      <div className={classes.root}>
         {Array.from([0, 0, 0, 0, 0]).map((x, ind) => {
           if (ind <= this.state.hoveredIndex) {
             return (
@@ -58,7 +60,7 @@ class Rating extends React.Component {
   }
 }
 
-Rating.propTypes = {
+Rating.PropTypes = {
   classes: PropTypes.object.isRequired
 };
 
