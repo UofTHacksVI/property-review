@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchBar from './components/SearchBar';
 import Map from './components/Map';
 import CreateReview from './components/CreateReview';
+import AuthPage from './components/AuthPage';
 
 const styles = theme => ({
   root: { padding: theme.spacing.unit * 2 }
@@ -21,10 +22,11 @@ class App extends Component {
     const { address } = this.state;
 
     return (
-      <div className={classes.root}>
-        <SearchBar address={address} handleChange={this.handleChange} />
-        <Map showHeatMap />
-      </div>
+      // <div className={classes.root}>
+      //   <SearchBar address={address} handleChange={this.handleChange} />
+      //   <Map showHeatMap />
+      // </div>
+      <AuthPage />
     );
   }
 }
