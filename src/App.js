@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className={classes.root}>
         <SearchBar address={address} handleChange={this.handleChange} />
-        <Map />
+        <Map showHeatMap />
       </div>
     );
   }
