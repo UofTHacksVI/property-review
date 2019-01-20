@@ -32,7 +32,7 @@ class HomePage extends Component {
           address={address}
         />
         <div className={classes.map}>
-          <Map />
+          <Map showHeaMap={true} />
         </div>
       </div>
     );

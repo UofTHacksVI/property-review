@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
+import ReviewRating from './ReviewRating';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    padding: theme.spacing.unit * 2
   }
 });
 
@@ -14,7 +16,7 @@ const Review = ({ classes, property }) => (
     <span>
       <b>{property.author}</b>
     </span>
-    <span>{property.rating}</span>
+    <ReviewRating rating={property.rating} />
     <span>{property.date}</span>
     <span>{property.body}</span>
   </div>

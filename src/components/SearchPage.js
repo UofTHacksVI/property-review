@@ -24,17 +24,24 @@ const styles = () => ({
 
 class SearchPage extends Component {
   state = {
-    address: ''
+    address: '',
+    selectedResult: null
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  handleSearch = () => this.props.history.push('/search');
+  handleSearch = () => {
+    if (!this.state.address) {
+      return;
+    }
+    this.setState({ selectedResult: null });
+    this.props.history.push('/search');
+  };
 
-  handleSearchResultClick = () => this.props.history.push('/address');
+  handleResultSelection = selectedResult => this.setState({ selectedResult });
 
   render() {
-    const { address } = this.state;
+    const { address, selectedResult } = this.state;
     const { classes } = this.props;
 
     return (
@@ -47,14 +54,21 @@ class SearchPage extends Component {
         <div className={classes.innerContainer}>
           <div className={classes.searchResults}>
             <SearchResults
+              selectedResult={selectedResult}
+              handleResultSelection={this.handleResultSelection}
               results={[
                 {
                   address: '101 bubble gum road',
                   avgRating: '1.2',
                   numRatings: '22',
                   reviews: [
-                    { author: 'bob', date: -1, description: 'shit house' },
-                    { author: 'bob2', date: 0, description: 'absolute waste' }
+                    { rating: 2, author: 'bob', date: -1, body: 'shit house' },
+                    {
+                      rating: 1,
+                      author: 'bob2',
+                      date: 0,
+                      body: 'absolute waste'
+                    }
                   ]
                 },
                 {
@@ -63,14 +77,16 @@ class SearchPage extends Component {
                   numRatings: '22',
                   reviews: [
                     {
+                      rating: 4,
                       author: 'bob',
                       date: 1,
-                      description: 'great place to raise a family'
+                      body: 'great place to raise a family'
                     },
                     {
+                      rating: 4,
                       author: 'bob 2',
                       date: 2,
-                      description: 'abusive father lives here'
+                      body: 'great place to raise a family'
                     }
                   ]
                 },
@@ -80,14 +96,16 @@ class SearchPage extends Component {
                   numRatings: '22',
                   reviews: [
                     {
+                      rating: 0,
                       author: 'bob 3',
                       date: 3,
-                      description: "can't beat this price"
+                      body: "can't beat this price"
                     },
                     {
+                      rating: 1,
                       author: 'bob 4',
                       date: 4,
-                      description: 'mice infestation'
+                      body: 'mice infestation'
                     }
                   ]
                 },
@@ -97,14 +115,16 @@ class SearchPage extends Component {
                   numRatings: '22',
                   reviews: [
                     {
+                      rating: 3,
                       author: 'bob 5',
                       date: 6,
-                      description: 'landlord is a terrible human being'
+                      body: 'landlord is a terrible human being'
                     },
                     {
+                      rating: 5,
                       author: 'bob 6',
                       date: 7,
-                      description: 'mold in the bathtub'
+                      body: 'mold in the bathtub'
                     }
                   ]
                 }

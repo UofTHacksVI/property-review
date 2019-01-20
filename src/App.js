@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import SearchBar from './components/SearchBar';
-import Map from './components/Map';
-import CreateReview from './components/CreateReview';
-import AuthPage from './components/AuthPage';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 
